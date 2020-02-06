@@ -1,6 +1,6 @@
 from centos
 
-run yum -y install openssh-sever
+run yum -y install openssh-server openssh-clients
 
 run useradd remote_user && \
     echo "1234" | passwd remote_user --stdin && \
