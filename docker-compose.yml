@@ -9,6 +9,20 @@ services:
        - "$PWD/jenkins_home:/var/jenkins_home"
      networks:
        - net
-
+  remote_host:
+    container_name: remote-db_host
+    build:
+      context: remote_host
+    networks:
+      - net
+  db_hosts:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    volumes:
+      - "$PWD/db_data:/var/lib/mysql"
+    networks:
+      - net
 networks:
   net:
